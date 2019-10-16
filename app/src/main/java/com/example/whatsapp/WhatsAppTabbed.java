@@ -6,19 +6,17 @@ import android.os.Bundle;
 import com.example.whatsapp.Adaptadores.AdaptadorChat;
 import com.example.whatsapp.Adaptadores.AdaptadorEstado;
 import com.example.whatsapp.Adaptadores.AdaptadorLlamadas;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
-import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
+
 import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
+import android.view.MenuInflater;
 import android.widget.ListView;
 import android.widget.TabHost;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -26,6 +24,7 @@ import java.util.ArrayList;
 public class WhatsAppTabbed extends AppCompatActivity {
 
     ArrayList<Contacto> arrayContacto;
+    TabHost tabHost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,24 +37,27 @@ public class WhatsAppTabbed extends AppCompatActivity {
         tabs.setup();
 
         //Tab Camera
-        TabHost.TabSpec spec=tabs.newTabSpec("tabCamera");
+   /*     TabHost.TabSpec spec=tabs.newTabSpec("tabCamera");
         spec.setContent(R.id.tabCamera);
         spec.setIndicator("",res.getDrawable(R.drawable.ic_camera_alt_black_24dp,null));
         tabs.addTab(spec);
-
+*/
         //Tab Chat
 
         arrayContacto = new ArrayList<Contacto>();
 
         arrayContacto.add(new Contacto(R.mipmap.ic_contacto1,"Rodrigo","Hey!!","01:00"));
 
-        spec=tabs.newTabSpec("tabChat");
+        tabHost = tabs;
+
+        TabHost.TabSpec spec=tabs.newTabSpec("tabChat");
 
         ListView listChat = findViewById(R.id.tabChat);
 
         final AdaptadorChat adaptadorChat = new AdaptadorChat(this,arrayContacto);
 
         listChat.setAdapter(adaptadorChat);
+
 
         spec.setContent(R.id.tabChat);
         spec.setIndicator("Chat");
@@ -96,9 +98,43 @@ public class WhatsAppTabbed extends AppCompatActivity {
             @Override
             public void onTabChanged(String s) {
                 Log.i("AndroidTabsDemo","Pulsada pestaña: "+s);
+
             }
         });
     }
 
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
 
-}
+        MenuInflater inflater = getMenuInflater();
+        int currentTab = tabHost.getCurrentTab();
+
+        menu.clear();
+
+        switch (currentTab) {
+
+            case 0:
+                inflater.inflate(R.menu.chat, menu);
+                break;
+
+            case 1:
+                inflater.inflate(R.menu.estados, menu);
+                break;
+
+            case 2:
+                inflater.inflate(R.menu.llamadas, menu);
+                break;
+
+
+        }
+
+
+        closeOptionsMenu();
+
+
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+
+
+    }

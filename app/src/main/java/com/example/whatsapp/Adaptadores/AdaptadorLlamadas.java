@@ -35,7 +35,7 @@ public class AdaptadorLlamadas extends ArrayAdapter<Contacto> {
     @Override
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        LayoutInflater inflater = LayoutInflater.from(context);
+        LayoutInflater inflater = LayoutInflater.from(getContext());
         View item = inflater.inflate(R.layout.layout_list_llamadas, null);
 
         Contacto contacto = arrayContacto.get(position);

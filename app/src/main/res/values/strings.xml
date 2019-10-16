@@ -3,4 +3,11 @@
     <string name="title_activity_whats_app_tabbed">WhatsAppTabbed</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="NombrePropietario">Paco</string>
+    <string name="EstadoPropietario">Soy yo</string>
+    <string name="ImagenPropietario">Imagen Propietario</string>
+    <string name="SettingsChat">Settings chat</string>
+    <string name="SettingsEstados">Settings estados</string>
+    <string name="SettingsLlamadas">Settings llamadas</string>
+    <string name="Search">Search</string>
 </resources>

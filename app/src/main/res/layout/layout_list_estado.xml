@@ -6,19 +6,25 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/ivPropietario"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_marginStart="12dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="50dp"
+            android:adjustViewBounds="false"
+            android:contentDescription="@string/ImagenPropietario"
+            android:cropToPadding="false"
+            app:layout_constraintEnd_toStartOf="@+id/tvNombProp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_launcher_background" />
+            app:srcCompat="@drawable/propietario" />
 
         <TextView
             android:id="@+id/tvNombProp"
@@ -26,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:layout_marginTop="16dp"
-            android:text="Nombre"
+            android:text="@string/NombrePropietario"
             android:textSize="24sp"
             app:layout_constraintStart_toEndOf="@+id/ivPropietario"
             app:layout_constraintTop_toTopOf="parent" />
@@ -37,22 +43,24 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:layout_marginTop="12dp"
-            android:text="Estado"
+            android:text="@string/EstadoPropietario"
             app:layout_constraintStart_toEndOf="@+id/ivPropietario"
             app:layout_constraintTop_toBottomOf="@+id/tvNombProp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ListView
-        android:id="@+id/listView"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#e0e0e0">
 
         <TextView
             android:id="@+id/tvRecientes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Recientes" />
-    </ListView>
+            android:text="Recientes"
+            android:textSize="24sp" />
+    </FrameLayout>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -60,13 +68,13 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_marginStart="12dp"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@mipmap/ic_launcher_round" />
+            />
 
         <TextView
             android:id="@+id/tvNombre"
@@ -81,13 +89,11 @@
 
         <TextView
             android:id="@+id/tvEstado"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="234dp"
             android:text="Estado"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
     </androidx.constraintlayout.widget.ConstraintLayout>
